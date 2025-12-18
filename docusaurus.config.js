@@ -8,14 +8,14 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'From Digital Intelligence to Embodied Agents',
-  url: 'https://your-domain.github.io',
-  baseUrl: '/',
+  url: 'https://muhammadasgharramzan.github.io',
+  baseUrl: '/physical-ai-humanoid-robotics/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   // GitHub pages deployment config.
-  organizationName: 'your-username', // Usually your GitHub org/user name.
+  organizationName: 'MuhammadAsgharramzan', // Usually your GitHub org/user name.
   projectName: 'physical-ai-humanoid-robotics', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
