@@ -1,0 +1,101 @@
+# Dependencies
+node_modules/
+
+# Docusaurus
+.docusaurus/
+build/
+
+# Environment variables
+.env*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local configuration
+.config/
+.local/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Output of `npm pack`
+*.tgz
+
+# Next.js
+.next/
+out/
+
+# Nuxt.js
+.nuxt/
+dist/
+
+# Gatsby
+.cache/
+public/
+
+# Temporary files
+tmp/
+temp/
+
+# IDE
+.vs/
+*.log
+
+# Build outputs
+dist/
+out/
+build/
+coverage/
+.nyc_output/
+.jest/
+jest-coverage/
+.eslintcache
+
+# Local development
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Secrets
+secrets/
+*.key
+*.pem
+*.crt
+*.cert
+
+# Browser extensions
+*.crx
+
+# Testing
+coverage/
+.nyc_output/
+.jest/
+jest-coverage/
+.eslintcache
+
+# TypeScript
+*.tsbuildinfo
+dist/
+out/
+
+# Database
+*.db
+*.db-journal
+
+# System
+.DS_Store
+Thumbs.db
