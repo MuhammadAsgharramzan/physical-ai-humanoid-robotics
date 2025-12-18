@@ -70,13 +70,12 @@ const config = {
             position: 'left',
             label: 'Textbook',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
             type: 'localeDropdown',
             position: 'right',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics',
             label: 'GitHub',
             position: 'right',
           },
@@ -115,12 +114,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics',
               },
             ],
           },
