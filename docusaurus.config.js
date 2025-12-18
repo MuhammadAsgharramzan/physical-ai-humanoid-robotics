@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'From Digital Intelligence to Embodied Agents',
-  url: 'https://muhammadasgharramzan.github.io',
-  baseUrl: '/physical-ai-humanoid-robotics/',
+  url: 'https://your-domain.vercel.app',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
