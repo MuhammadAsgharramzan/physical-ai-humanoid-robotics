@@ -1,36 +1,57 @@
-# Physical AI & Humanoid Robotics: From Digital Intelligence to Embodied Agents - Project Constitution
-
-## Project Name
-Physical AI & Humanoid Robotics: From Digital Intelligence to Embodied Agents
-
-## Vision & Mission
-Create an AI-native textbook using Docusaurus, deployed to GitHub Pages, with embedded RAG chatbot, personalized content, and Urdu translation. Our mission is to bridge the gap between digital intelligence and embodied agents by providing accessible, interactive educational content that enables students and professionals to understand and develop humanoid robotics systems.
+# Physical AI & Humanoid Robotics Constitution
 
 ## Core Principles
-- **Spec-driven development**: All content and functionality will be planned and documented through clear specifications before implementation
-- **Modular, reusable content**: Chapters and concepts will be designed as independent modules that can be reused and recombined
-- **Docusaurus-native markdown structure**: All content will follow Docusaurus conventions for seamless integration and deployment
-- **GitHub Pages deployment**: The textbook will be deployed using GitHub Pages for maximum accessibility and version control
-- **AI-native pedagogy**: Incorporate interactive labs, exercises, and code examples that leverage AI tools for enhanced learning
 
-## Target Audience
-Students and professionals with basic programming knowledge but new to robotics. The content will be designed to accommodate different learning styles and backgrounds while maintaining technical rigor.
+### I. Education-First
+Content and features must prioritize educational value above all else. Every addition to the platform should directly contribute to learning outcomes for students of physical AI and humanoid robotics. Educational content must be accurate, accessible, and practically applicable.
 
-## Success Metrics
-- Full textbook deployed to GitHub Pages with responsive design and intuitive navigation
-- Functional RAG chatbot capable of answering user questions about robotics concepts
-- Personalization features that adapt content to individual learning paths
-- Urdu translation available for broader accessibility
-- Modular chapters with reproducible specs that can be maintained and updated independently
+### II. Accessibility & Inclusion (NON-NEGOTIABLE)
+All content and features must be accessible to diverse audiences including those with disabilities and different language backgrounds. Urdu localization is not optional but required. WCAG 2.1 AA compliance is mandatory for all UI components.
 
-## Implementation Approach
-- Follow Docusaurus documentation standards for content organization
-- Integrate AI tools for content personalization and multilingual support
-- Implement RAG system for intelligent Q&A capabilities
-- Ensure responsive design for multiple device types
-- Establish content review and update processes
+### III. Test-First (NON-NEGOTIABLE)
+TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced. All functionality must have corresponding tests before deployment.
+
+### IV. Performance-Driven
+All features must meet defined performance benchmarks: Page load time under 3 seconds, chatbot response time under 2 seconds, and 99.9% uptime. Performance regressions are not acceptable.
+
+### V. Reproducibility & Documentation
+All examples, tutorials, and processes must be fully reproducible with clear documentation. Code examples must include expected outputs and environment setup instructions. Version control and changelog maintenance are required.
+
+### VI. Spec-Driven Development
+All implementation must strictly follow the defined specifications. Changes to implementation must be reflected in the spec first before implementation. No feature creep is allowed without spec updates.
+
+## Additional Constraints
+
+### Technology Stack Requirements
+- Docusaurus for documentation platform
+- FastAPI for backend services
+- Neon DB for structured data
+- Qdrant for vector storage
+- OpenAI API for AI services
+- GitHub Pages for deployment
+
+### Security & Compliance Standards
+- GDPR compliance for user data
+- WCAG 2.1 AA accessibility compliance
+- Secure authentication and data handling
+- Regular security reviews and penetration testing
+
+## Development Workflow
+
+### Code Review Requirements
+- All PRs must include test coverage
+- Educational content accuracy verification
+- Accessibility compliance check
+- Performance impact assessment
+
+### Quality Gates
+- All tests must pass
+- Performance benchmarks met
+- Accessibility validation passed
+- Educational content reviewed by domain expert
 
 ## Governance
-This constitution serves as the foundational document for the Physical AI & Humanoid Robotics textbook project. All development activities, content creation, and technical decisions must align with the principles outlined herein. Changes to this constitution require explicit approval from the project stakeholders.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-17 | **Last Amended**: 2025-12-17
+Constitution supersedes all other practices; Amendments require documentation, approval, and migration plan. All PRs/reviews must verify compliance; Complexity must be justified; Implementation must align with spec-driven approach.
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-27 | **Last Amended**: 2025-12-27

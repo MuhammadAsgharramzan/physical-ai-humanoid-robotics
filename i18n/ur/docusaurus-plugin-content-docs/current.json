@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Introduction": {
+    "message": "Introduction",
+    "description": "The label for category Introduction in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Module 1: Introduction to Physical AI and Humanoid Robotics": {
+    "message": "Module 1: Introduction to Physical AI and Humanoid Robotics",
+    "description": "The label for category Module 1: Introduction to Physical AI and Humanoid Robotics in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Module 2: Foundations of Embodied Intelligence": {
+    "message": "Module 2: Foundations of Embodied Intelligence",
+    "description": "The label for category Module 2: Foundations of Embodied Intelligence in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Module 3: AI Techniques for Robotics": {
+    "message": "Module 3: AI Techniques for Robotics",
+    "description": "The label for category Module 3: AI Techniques for Robotics in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Module 4: Human-Robot Interaction": {
+    "message": "Module 4: Human-Robot Interaction",
+    "description": "The label for category Module 4: Human-Robot Interaction in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Module 5: Advanced Control Systems": {
+    "message": "Module 5: Advanced Control Systems",
+    "description": "The label for category Module 5: Advanced Control Systems in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Module 6: Real-World Deployment and Validation": {
+    "message": "Module 6: Real-World Deployment and Validation",
+    "description": "The label for category Module 6: Real-World Deployment and Validation in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Reference": {
+    "message": "Reference",
+    "description": "The label for category Reference in sidebar tutorialSidebar"
+  }
+}

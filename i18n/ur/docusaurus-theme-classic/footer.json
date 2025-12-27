@@ -1,0 +1,78 @@
+{
+  "link.title.Chapters": {
+    "message": "Chapters",
+    "description": "The title of the footer links column with title=Chapters in the footer"
+  },
+  "link.title.Resources": {
+    "message": "Resources",
+    "description": "The title of the footer links column with title=Resources in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.Legal": {
+    "message": "Legal",
+    "description": "The title of the footer links column with title=Legal in the footer"
+  },
+  "link.item.label.Introduction": {
+    "message": "Introduction",
+    "description": "The label of footer link with label=Introduction linking to /docs/intro"
+  },
+  "link.item.label.Module 1: Physical AI Fundamentals": {
+    "message": "Module 1: Physical AI Fundamentals",
+    "description": "The label of footer link with label=Module 1: Physical AI Fundamentals linking to /docs/module-1/lesson-1-fundamentals-of-physical-ai"
+  },
+  "link.item.label.Module 2: Embodied Intelligence": {
+    "message": "Module 2: Embodied Intelligence",
+    "description": "The label of footer link with label=Module 2: Embodied Intelligence linking to /docs/module-2/lesson-1-sensorimotor-integration"
+  },
+  "link.item.label.Module 3: AI Techniques for Robotics": {
+    "message": "Module 3: AI Techniques for Robotics",
+    "description": "The label of footer link with label=Module 3: AI Techniques for Robotics linking to /docs/module-3/lesson-1-computer-vision-for-robotics"
+  },
+  "link.item.label.ROS2 Documentation": {
+    "message": "ROS2 Documentation",
+    "description": "The label of footer link with label=ROS2 Documentation linking to https://docs.ros.org/en/humble/"
+  },
+  "link.item.label.Gazebo Simulator": {
+    "message": "Gazebo Simulator",
+    "description": "The label of footer link with label=Gazebo Simulator linking to https://gazebosim.org/"
+  },
+  "link.item.label.Isaac Sim": {
+    "message": "Isaac Sim",
+    "description": "The label of footer link with label=Isaac Sim linking to https://developer.nvidia.com/isaac-sim"
+  },
+  "link.item.label.Research Papers": {
+    "message": "Research Papers",
+    "description": "The label of footer link with label=Research Papers linking to #"
+  },
+  "link.item.label.GitHub Discussions": {
+    "message": "GitHub Discussions",
+    "description": "The label of footer link with label=GitHub Discussions linking to https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/discussions"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "The label of footer link with label=Stack Overflow linking to https://stackoverflow.com/questions/tagged/docusaurus"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "The label of footer link with label=Discord linking to https://discordapp.com/invite/docusaurus"
+  },
+  "link.item.label.Privacy Policy": {
+    "message": "Privacy Policy",
+    "description": "The label of footer link with label=Privacy Policy linking to /privacy"
+  },
+  "link.item.label.Terms of Service": {
+    "message": "Terms of Service",
+    "description": "The label of footer link with label=Terms of Service linking to /tos"
+  },
+  "link.item.label.MIT License": {
+    "message": "MIT License",
+    "description": "The label of footer link with label=MIT License linking to https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/blob/main/LICENSE"
+  },
+  "copyright": {
+    "message": "Copyright © 2025 Physical AI & Humanoid Robotics Project. Built with Docusaurus.",
+    "description": "The footer copyright"
+  }
+}

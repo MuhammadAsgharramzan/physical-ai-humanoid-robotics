@@ -107,6 +107,18 @@ Current robotics education lacks comprehensive, interactive, and accessible reso
 - Code examples should include expected outputs and error handling
 - All diagrams and illustrations should have descriptive alt text for accessibility
 
+### 4.4 Performance Requirements
+- Page load time must be under 3 seconds globally (measured from request to fully rendered content)
+- Chatbot response time must be under 2 seconds for 95% of queries (measured from query submission to first response)
+- System uptime must be maintained at 99.9% availability (measured monthly with scheduled maintenance windows excluded)
+- All API endpoints must respond within 1 second under normal load conditions
+- Content search must return results within 500ms for queries across entire knowledge base
+
+### 4.5 Scalability Requirements
+- System must support up to 1000 concurrent users without performance degradation
+- Content repository must accommodate up to 500 pages of educational content
+- Data storage must scale to accommodate user analytics and personalization data
+
 ## 5. Constraints
 
 ### 5.1 Content Requirements
@@ -122,6 +134,11 @@ Current robotics education lacks comprehensive, interactive, and accessible reso
 - Third-party libraries must be well-maintained (active development, good documentation)
 - Deployment must be cost-effective and scalable with minimal ongoing costs
 - All tools used must be open-source or have appropriate licensing for educational use
+
+### 5.3 Compliance Requirements
+- Must comply with WCAG 2.1 AA accessibility standards
+- Must comply with GDPR for data protection and privacy
+- Must meet educational accessibility standards for diverse learners
 
 ## 6. Success Metrics for Hackathon Scoring
 
@@ -193,7 +210,17 @@ Current robotics education lacks comprehensive, interactive, and accessible reso
 - Color contrast ratios must meet accessibility guidelines (4.5:1 minimum)
 - Alternative text for all images and diagrams with descriptive captions
 
-## 9. Implementation Timeline
+## 9. Clarifications
+
+### Session 2025-12-26
+
+- Q: What are the specific performance targets for page load time, chatbot response, and system uptime? → A: Page load time under 3 seconds, Chatbot response time under 2 seconds, 99.9% uptime
+- Q: What specific compliance requirements should be met beyond WCAG? → A: WCAG 2.1 AA compliance, GDPR for data protection, and educational accessibility standards
+- Q: What are the specific scale assumptions for concurrent users and content volume? → A: Expected concurrent users (e.g., 1000), content volume (e.g., 500 pages), and data storage needs
+- Q: How should security requirements be specified? → A: Keep general language, continue with current security references without specific implementation details
+- Q: How should data retention and privacy policies be specified? → A: Keep general language, continue with current privacy references without specific policies
+
+## 10. Implementation Timeline
 
 ### Phase 1: Foundation (Weeks 1-2)
 - Set up Docusaurus infrastructure with basic configuration
@@ -201,18 +228,44 @@ Current robotics education lacks comprehensive, interactive, and accessible reso
 - Implement GitHub Pages deployment pipeline with GitHub Actions
 - Establish content authoring workflow and versioning system
 
-### Phase 2: Core Content (Weeks 3-4)
-- Develop first 3 modules of content with comprehensive materials
-- Create interactive examples and code snippets with expected outputs
-- Implement basic RAG functionality with content indexing
+### Phase 2: Content Framework (Weeks 3-4)
+- Create content templates and component library
+- Implement module structure with sample content for first 3 modules
+- Add code block and diagram rendering capabilities
+- Integrate basic search functionality
 
-### Phase 3: Advanced Features (Weeks 5-6)
-- Complete RAG chatbot implementation with full conversational capabilities
-- Add personalization features with user profiles and adaptive content
-- Implement Urdu translation with cultural adaptation
+### Phase 3: AI Infrastructure (Weeks 5-6)
+- Deploy FastAPI backend with basic endpoints
+- Set up Neon DB and Qdrant vector store
+- Implement content indexing pipeline
+- Create basic RAG functionality
 
-### Phase 4: Polish & Deploy (Weeks 7-8)
-- Complete remaining modules and finalize all content
-- Implement accessibility features and conduct accessibility testing
-- Conduct comprehensive testing and iteration based on feedback
-- Final deployment and documentation with launch preparation
+### Phase 4: Advanced AI Features (Weeks 7-8)
+- Enhance RAG with context management
+- Implement conversation memory and follow-ups
+- Add confidence scoring and source citations
+- Integrate OpenAI Agents framework
+
+### Phase 5: Personalization (Weeks 9-10)
+- Implement user authentication and profiles
+- Create learning analytics and tracking
+- Develop adaptive content delivery
+- Build recommendation engine
+
+### Phase 6: Localization (Weeks 11-12)
+- Implement i18n framework for Urdu translation
+- Create translation workflow and tools
+- Add RTL support and cultural adaptation
+- Test accessibility features
+
+### Phase 7: Integration & Testing (Weeks 13-14)
+- Integrate all components into cohesive system
+- Conduct comprehensive testing (unit, integration, user acceptance)
+- Performance optimization and accessibility testing
+- Security review and compliance verification
+
+### Phase 8: Deployment & Documentation (Weeks 15-16)
+- Final deployment to GitHub Pages
+- Create user documentation and guides
+- Prepare launch and marketing materials
+- Establish maintenance and update procedures

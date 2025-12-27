@@ -1,0 +1,131 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.navbar {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--ifm-navbar-background-color);
+}
+
+.navbar__brand {
+  text-decoration: none;
+}
+
+.navbar__logo {
+  height: var(--ifm-navbar-logo-height);
+  width: var(--ifm-navbar-logo-height);
+  margin-right: 5px;
+}
+
+.navbar__title {
+  font-size: 1.25rem;
+  font-weight: var(--ifm-font-weight-bold);
+}
+
+.navbar__items {
+  display: flex;
+  flex: 1;
+}
+
+.navbar__items--right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__item {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.navbar__link {
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.navbar__toggle {
+  margin-right: 0.5rem;
+}
+
+.navbar__search {
+  margin-left: 0.5rem;
+}
+
+.navbar__search-input {
+  height: 2.2rem;
+}
+
+.navbar__inner {
+  display: flex;
+  flex: 1;
+}
+
+.navbar__mobile {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.navbar__sidebar__back {
+  display: none;
+}
+
+@media (max-width: 996px) {
+  .navbar__items {
+    align-items: center;
+  }
+
+  .navbar__items--right {
+    flex: unset;
+  }
+
+  .navbar__item {
+    margin: 0 0.25rem;
+  }
+
+  .navbar__toggle {
+    margin-right: 0.25rem;
+  }
+
+  .navbar__search {
+    margin-left: 0.25rem;
+  }
+
+  .navbar__search-input {
+    width: 100%;
+  }
+
+  .navbar__sidebar__back {
+    display: inherit;
+    left: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    position: absolute;
+    font-weight: var(--ifm-font-weight-bold);
+    color: var(--ifm-color-emphasis-900);
+  }
+}
+
+@media (min-width: 997px) {
+  .navbar {
+    height: var(--ifm-navbar-height);
+  }
+
+  .navbar__inner {
+    max-width: var(--ifm-container-width);
+    margin: 0 auto;
+    padding: 0 var(--ifm-container-padding-horizontal);
+  }
+
+  .navbar__items {
+    min-height: var(--ifm-navbar-height);
+  }
+
+  .navbar__items--right {
+    min-height: var(--ifm-navbar-height);
+  }
+
+  .navbar__item {
+    display: flex;
+    align-items: center;
+  }
+}

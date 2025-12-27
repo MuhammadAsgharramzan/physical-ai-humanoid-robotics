@@ -61,7 +61,7 @@ const config = {
         title: 'Physical AI & Humanoid Robotics',
         logo: {
           alt: 'Physical AI Logo',
-          src: 'img/logo.svg',
+          src: 'img/robot-icon.svg',
         },
         items: [
           {
@@ -85,17 +85,54 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Chapters',
             items: [
               {
-                label: 'Textbook',
+                label: 'Introduction',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Module 1: Physical AI Fundamentals',
+                to: '/docs/module-1/lesson-1-fundamentals-of-physical-ai',
+              },
+              {
+                label: 'Module 2: Embodied Intelligence',
+                to: '/docs/module-2/lesson-1-sensorimotor-integration',
+              },
+              {
+                label: 'Module 3: AI Techniques for Robotics',
+                to: '/docs/module-3/lesson-1-computer-vision-for-robotics',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'ROS2 Documentation',
+                href: 'https://docs.ros.org/en/humble/',
+              },
+              {
+                label: 'Gazebo Simulator',
+                href: 'https://gazebosim.org/',
+              },
+              {
+                label: 'Isaac Sim',
+                href: 'https://developer.nvidia.com/isaac-sim',
+              },
+              {
+                label: 'Research Papers',
+                href: '#',
               },
             ],
           },
           {
             title: 'Community',
             items: [
+              {
+                label: 'GitHub Discussions',
+                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/discussions',
+              },
               {
                 label: 'Stack Overflow',
                 href: 'https://stackoverflow.com/questions/tagged/docusaurus',
@@ -104,18 +141,22 @@ const config = {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/docusaurus',
               },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
             ],
           },
           {
-            title: 'More',
+            title: 'Legal',
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics',
+                label: 'Privacy Policy',
+                href: '/privacy',
+              },
+              {
+                label: 'Terms of Service',
+                href: '/tos',
+              },
+              {
+                label: 'MIT License',
+                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/blob/main/LICENSE',
               },
             ],
           },

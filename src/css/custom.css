@@ -4,6 +4,8 @@
  * work well for content-centric websites.
  */
 
+@import url('./translate-button.css');
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
@@ -27,4 +29,154 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Footer Styles */
+.footer {
+  padding: 2rem 0 1rem;
+  background-color: var(--ifm-footer-background-color, #2b2b2b);
+  color: var(--ifm-footer-color, white);
+}
+
+.footer__container {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1.5rem;
+}
+
+.footer__links {
+  margin-bottom: 2rem;
+}
+
+.footer__title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--ifm-footer-link-color, white);
+}
+
+.footer__items {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer__item {
+  margin-bottom: 0.5rem;
+}
+
+.footer__link-item {
+  color: var(--ifm-footer-link-color, #ccc);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-footer-link-hover-color, white);
+  text-decoration: underline;
+}
+
+.footer__newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer__newsletter-input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer__newsletter-button {
+  padding: 0.5rem;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.footer__newsletter-button:hover {
+  background-color: var(--ifm-color-primary-dark);
+}
+
+.footer__social-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__social-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ifm-footer-link-color, #ccc);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__social-link:hover {
+  color: var(--ifm-footer-link-hover-color, white);
+}
+
+.footer__social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer__logo {
+  max-height: 40px;
+  width: auto;
+}
+
+.footer__bottom {
+  padding-top: 1rem;
+}
+
+.footer__copyright {
+  text-align: center;
+  color: var(--ifm-footer-copyright-color, #aaa);
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+  .footer__social-links {
+    justify-content: center;
+  }
+
+  .footer__newsletter {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .footer__newsletter-input,
+  .footer__newsletter-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__social-links {
+    gap: 1rem;
+  }
+
+  .footer__links {
+    margin-bottom: 1rem;
+  }
 }

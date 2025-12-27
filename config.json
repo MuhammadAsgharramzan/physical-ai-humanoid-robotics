@@ -1,0 +1,27 @@
+﻿{  
+  "LOG": true,  
+  "LOG_LEVEL": "info",  
+  "HOST": "127.0.0.1",  
+  "PORT": 3456,  
+  "API_TIMEOUT_MS": 600000,  
+  "Providers": [  
+    {  
+      "name": "qwen",  
+      "api_base_url": "https://portal.qwen.ai/v1/chat/completions",  
+      "api_key": "5TizmkaOYWwHjwV05yhgketFmKUzHxp17m2FvCOQ4GsL7mJpDLlXLwSpuKREiuL569EUbL5TvUj8tXLw4LsSoQ",  
+      "models": [  
+        "qwen3-coder-plus",  
+        "qwen3-coder-plus",  
+        "qwen3-coder-plus"  
+      ]  
+    }  
+  ],  
+  "Router": {  
+    "default": "qwen,qwen3-coder-plus",  
+    "background": "qwen,qwen3-coder-plus",  
+    "think": "qwen,qwen3-coder-plus",  
+    "longContext": "qwen,qwen3-coder-plus",  
+    "longContextThreshold": 60000,  
+    "webSearch": "qwen,qwen3-coder-plus"  
+  }  
+}
