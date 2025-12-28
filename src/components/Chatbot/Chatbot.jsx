@@ -15,7 +15,14 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
     if (savedConversation) {
       const conversation = JSON.parse(savedConversation);
       setConversationId(conversation.id);
-      setMessages(conversation.messages);
+
+      // Convert timestamp strings back to Date objects
+      const messagesWithDates = conversation.messages.map(message => ({
+        ...message,
+        timestamp: new Date(message.timestamp)
+      }));
+
+      setMessages(messagesWithDates);
     } else {
       // Generate a unique conversation ID
       const id = `conv_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -27,7 +34,7 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
           id: 'welcome',
           role: 'assistant',
           content: 'Hello! I\'m your Physical AI & Humanoid Robotics assistant. How can I help you with the textbook today?',
-          timestamp: new Date()
+          timestamp: new Date().toISOString()
         }
       ]);
     }
@@ -36,9 +43,15 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
   // Save conversation to localStorage whenever messages change
   useEffect(() => {
     if (conversationId && messages.length > 0) {
+      // Convert Date objects to ISO strings for storage
+      const messagesForStorage = messages.map(message => ({
+        ...message,
+        timestamp: message.timestamp instanceof Date ? message.timestamp.toISOString() : message.timestamp
+      }));
+
       const conversation = {
         id: conversationId,
-        messages: messages,
+        messages: messagesForStorage,
         timestamp: new Date().toISOString()
       };
       localStorage.setItem('chatbot-conversation', JSON.stringify(conversation));
@@ -63,7 +76,7 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
       id: `user_${Date.now()}`,
       role: 'user',
       content: inputValue,
-      timestamp: new Date()
+      timestamp: new Date().toISOString()
     };
 
     setMessages(prev => [...prev, userMessage]);
@@ -87,7 +100,7 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
           content: data.response,
           citations: data.citations,
           confidence: data.confidence,
-          timestamp: new Date()
+          timestamp: new Date().toISOString()
         };
         setMessages(prev => [...prev, botMessage]);
       } else {
@@ -96,7 +109,7 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
           id: `error_${Date.now()}`,
           role: 'assistant',
           content: `Sorry, I encountered an error: ${errorData.detail || 'Unknown error'}`,
-          timestamp: new Date()
+          timestamp: new Date().toISOString()
         };
         setMessages(prev => [...prev, errorMessage]);
       }
@@ -105,7 +118,7 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
         id: `error_${Date.now()}`,
         role: 'assistant',
         content: 'Sorry, I\'m having trouble connecting to the server. Please try again.',
-        timestamp: new Date()
+        timestamp: new Date().toISOString()
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -149,8 +162,8 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
           >
             <div className="message-header">
               <strong>{message.role === 'user' ? 'You' : 'Assistant'}</strong>
-              <span className="timestamp" aria-label={`Sent at ${message.timestamp.toLocaleTimeString()}`}>
-                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+              <span className="timestamp" aria-label={`Sent at ${new Date(message.timestamp).toLocaleTimeString()}`}>
+                {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>
             <div className="message-content">

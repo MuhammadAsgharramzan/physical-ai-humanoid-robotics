@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 import uvicorn
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
-from typing import List
+from typing import List, Optional
 
 from .database import get_db
 from .content_service import content_service
@@ -17,6 +17,7 @@ from .profile_service import profile_service
 from .adaptive_content import adaptive_content_service
 from .learning_path_service import learning_path_service
 from .recommendation_engine import recommendation_engine
+from .agents.rag_agent_service import rag_agent_service, RAGMode
 
 # Initialize rate limiter
 limiter = Limiter(key_func=get_remote_address)
@@ -70,9 +71,15 @@ async def search_content(request, query: str, db: AsyncSession = Depends(get_db)
 
 @app.post("/chat")
 @limiter.limit("10/minute")
-async def chat(request, conversation_id: str, user_message: str):
-    """Chat endpoint for interacting with the RAG chatbot"""
-    logger.info(f"Chat message received for conversation {conversation_id}")
+async def chat(
+    request,
+    conversation_id: str,
+    user_message: str,
+    mode: str = "full_book",  # Default to full-book mode
+    selected_text: Optional[str] = None  # For selected-text mode
+):
+    """Chat endpoint for interacting with the RAG chatbot with two modes"""
+    logger.info(f"Chat message received for conversation {conversation_id} in mode: {mode}")
 
     # Add user message to conversation
     await conversation_manager.add_message(conversation_id, MessageType.USER, user_message)
@@ -80,8 +87,24 @@ async def chat(request, conversation_id: str, user_message: str):
     # Get conversation context
     context = await conversation_manager.get_conversation_context(conversation_id, max_messages=5)
 
-    # Generate response using RAG
-    response_data = await rag_service.generate_response_with_citation(user_message)
+    # Determine the RAG mode
+    try:
+        rag_mode = RAGMode(mode.lower())
+    except ValueError:
+        rag_mode = RAGMode.FULL_BOOK  # Default to full-book if invalid mode
+
+    # Generate response using the appropriate RAG mode
+    if rag_mode == RAGMode.FULL_BOOK:
+        response_data = await rag_agent_service.generate_response(
+            query=user_message,
+            mode=rag_mode
+        )
+    elif rag_mode == RAGMode.SELECTED_TEXT:
+        response_data = await rag_agent_service.generate_response(
+            query=user_message,
+            mode=rag_mode,
+            selected_text=selected_text
+        )
 
     # Add assistant response to conversation
     await conversation_manager.add_message(
@@ -95,7 +118,8 @@ async def chat(request, conversation_id: str, user_message: str):
         "response": response_data["response"],
         "citations": response_data["citations"],
         "confidence": response_data["confidence"],
-        "conversation_id": conversation_id
+        "conversation_id": conversation_id,
+        "mode": rag_mode.value
     }
 
 @app.get("/chat/conversation/{conversation_id}")

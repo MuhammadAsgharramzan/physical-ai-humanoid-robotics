@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(copy \".specify\\memory\\constitution.md\" \".specify\\memory\\constitution.md.bak\")"
+      "Bash(copy \".specify\\memory\\constitution.md\" \".specify\\memory\\constitution.md.bak\")",
+      "Bash(mkdir \"C:\\\\Users\\\\Kashif Office\\\\physical-ai-humanoid-robotics\\\\backend\\\\agents\")"
     ]
   }
 }

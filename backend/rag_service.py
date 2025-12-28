@@ -1,6 +1,7 @@
 import asyncio
 import logging
 from typing import List, Dict, Any
+from agents import Agent, Runner
 from openai import OpenAI
 import os
 
@@ -12,9 +13,15 @@ class RAGService:
     def __init__(self):
         self.openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.content_indexer = content_indexer
+        # Initialize the agent for the RAG service
+        self.agent = Agent(
+            name="RAGAssistant",
+            instructions="You are an AI assistant for the Physical AI & Humanoid Robotics textbook. Answer questions based on the provided context from the textbook. If the context doesn't contain enough information to answer the question, say so. Be concise but informative in your response.",
+            model="gpt-3.5-turbo"
+        )
 
     async def generate_response(self, query: str, context_limit: int = 5) -> Dict[str, Any]:
-        """Generate a response to a query using RAG (Retrieval-Augmented Generation)"""
+        """Generate a response to a query using RAG (Retrieval-Augmented Generation) with OpenAI Agents SDK"""
         try:
             # Search for relevant content in the vector store
             search_results = await self.content_indexer.search_content(query, limit=context_limit)
@@ -41,39 +48,25 @@ class RAGService:
 
             context = "\n\n".join(context_parts)
 
-            # Generate a response using OpenAI
-            prompt = f"""
-            You are an AI assistant for the Physical AI & Humanoid Robotics textbook.
-            Answer the user's question based on the following context from the textbook.
-            If the context doesn't contain enough information to answer the question, say so.
-            Be concise but informative in your response.
-
-            Context:
-            {context}
+            # Generate a response using OpenAI Agent
+            input_text = f"""
+            Context: {context}
 
             Question: {query}
 
-            Answer:
+            Please provide a comprehensive answer based on the provided context.
+            If the context doesn't contain enough information to answer the question, say so.
+            Be concise but informative in your response.
             """
 
-            response = self.openai_client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are an AI assistant for the Physical AI & Humanoid Robotics textbook. Answer questions based on the provided context."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=500,
-                temperature=0.3
-            )
-
-            generated_response = response.choices[0].message.content.strip()
+            result = Runner.run_sync(self.agent, input_text)
 
             # Calculate a basic confidence score based on the highest score from search results
             max_score = max([result["score"] for result in search_results]) if search_results else 0.0
             confidence = min(max_score, 1.0)  # Normalize to 0-1 range
 
             return {
-                "response": generated_response,
+                "response": result.final_output,
                 "sources": sources,
                 "confidence": confidence
             }
@@ -87,7 +80,7 @@ class RAGService:
             }
 
     async def generate_response_with_citation(self, query: str, context_limit: int = 5) -> Dict[str, Any]:
-        """Generate a response with proper citations to textbook content"""
+        """Generate a response with proper citations to textbook content using OpenAI Agents SDK"""
         try:
             # Search for relevant content in the vector store
             search_results = await self.content_indexer.search_content(query, limit=context_limit)
@@ -118,40 +111,27 @@ class RAGService:
 
             context = "\n\n".join(context_parts)
 
-            # Generate a response using OpenAI with citation instructions
-            prompt = f"""
-            You are an AI assistant for the Physical AI & Humanoid Robotics textbook.
-            Answer the user's question based on the following context from the textbook.
-            Reference the sources appropriately in your answer (e.g., [Source 1], [Source 2]).
-            If the context doesn't contain enough information to answer the question, say so.
-            Be concise but informative in your response.
-
+            # Generate a response using OpenAI Agent with citation instructions
+            input_text = f"""
             Context:
             {context}
 
             Question: {query}
 
-            Answer with source references:
+            Please provide a comprehensive answer with source references (e.g., [Source 1], [Source 2]).
+            Reference the specific modules and lessons where information is found.
+            If the context doesn't contain enough information to answer the question, say so.
+            Be thorough but concise in your response.
             """
 
-            response = self.openai_client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are an AI assistant for the Physical AI & Humanoid Robotics textbook. Answer questions based on the provided context and reference sources appropriately."},
-                    {"role": "user", "content": prompt}
-                ],
-                max_tokens=500,
-                temperature=0.3
-            )
-
-            generated_response = response.choices[0].message.content.strip()
+            result = Runner.run_sync(self.agent, input_text)
 
             # Calculate a basic confidence score based on the highest score from search results
             max_score = max([result["score"] for result in search_results]) if search_results else 0.0
             confidence = min(max_score, 1.0)  # Normalize to 0-1 range
 
             return {
-                "response": generated_response,
+                "response": result.final_output,
                 "citations": citations,
                 "confidence": confidence
             }
