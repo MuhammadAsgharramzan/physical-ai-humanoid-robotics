@@ -65,25 +65,114 @@
 }
 
 .chatbot-toggle-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  width: 65px;
+  height: 65px;
+  border-radius: 25px; /* More chatbot-like rounded rectangle */
+  background: linear-gradient(135deg, #4285f4, #34a853);
   color: white;
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 6px 12px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 6px 16px rgba(66, 133, 244, 0.4);
   transition: all 0.3s ease;
   font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.chatbot-toggle-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.chatbot-toggle-button::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  background: white;
+  border-radius: 50% 50% 50% 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.chatbot-toggle-button .notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.8);
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.chatbot-toggle-button:hover::before {
+  opacity: 1;
+  transform: rotate(45deg) translate(20%, 20%);
 }
 
 .chatbot-toggle-button:hover {
-  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--ifm-color-primary-darker));
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 16px rgba(5, 150, 105, 0.4);
+  background: linear-gradient(135deg, #34a853, #4285f4);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(66, 133, 244, 0.5);
+}
+
+.chatbot-toggle-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Add a chat bubble shape inside the button */
+.chatbot-toggle-button::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 14px;
+  background: white;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  opacity: 0.9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.chatbot-toggle-button svg {
+  position: relative;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  margin-top: -2px; /* Slightly adjust position */
+}
+
+/* Add a small notification badge */
+.chatbot-toggle-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.8);
+  opacity: 0.8;
 }
 
 .chatbot-toggle-button:focus {
