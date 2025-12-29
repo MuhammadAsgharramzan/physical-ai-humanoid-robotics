@@ -441,5 +441,193 @@
   "theme.unlistedContent.message": {
     "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
     "description": "The unlisted content banner message"
+  },
+  "authentication.login.title": {
+    "message": "اپنے اکاؤنٹ میں لاگ ان کریں",
+    "description": "The title of the login page"
+  },
+  "authentication.signup.title": {
+    "message": "اکاؤنٹ بنائیں",
+    "description": "The title of the signup page"
+  },
+  "authentication.authcallback.title": {
+    "message": "توثیق کی جا رہی ہے...",
+    "description": "The title of the auth callback page"
+  },
+  "authentication.authcallback.description": {
+    "message": "توثیق کا عمل مکمل کیا جا رہا ہے",
+    "description": "The description of the auth callback page"
+  },
+  "authentication.login.header": {
+    "message": "اپنے اکاؤنٹ میں لاگ ان کریں",
+    "description": "Header text for the login page"
+  },
+  "authentication.login.description": {
+    "message": "اپنے اکاؤنٹ میں لاگ ان کریں",
+    "description": "Description for the login page"
+  },
+  "authentication.signup.header": {
+    "message": "اپنا اکاؤنٹ بنائیں",
+    "description": "Header text for the signup page"
+  },
+  "authentication.signup.description": {
+    "message": "ایک نیا اکاؤنٹ بنائیں",
+    "description": "Description for the signup page"
+  },
+  "authentication.authcallback.header": {
+    "message": "توثیق کی جا رہی ہے {provider} کے ساتھ...",
+    "description": "Header text for the auth callback page"
+  },
+  "authentication.authcallback.creating_account": {
+    "message": "آپ کا اکاؤنٹ بنایا جا رہا ہے",
+    "description": "Text shown when creating account during auth callback"
+  },
+  "authentication.authcallback.logging_in": {
+    "message": "آپ کو لاگ ان کیا جا رہا ہے",
+    "description": "Text shown when logging in during auth callback"
+  },
+  "authentication.field.username": {
+    "message": "صارف کا نام",
+    "description": "Label for username field"
+  },
+  "authentication.field.email": {
+    "message": "ای میل",
+    "description": "Label for email field"
+  },
+  "authentication.field.password": {
+    "message": "پاس ورڈ",
+    "description": "Label for password field"
+  },
+  "authentication.field.confirm_password": {
+    "message": "پاس ورڈ کی تصدیق کریں",
+    "description": "Label for confirm password field"
+  },
+  "authentication.placeholder.username": {
+    "message": "اپنا صارف نام درج کریں",
+    "description": "Placeholder for username input"
+  },
+  "authentication.placeholder.choose_username": {
+    "message": "ایک صارف نام منتخب کریں",
+    "description": "Placeholder for username input on signup"
+  },
+  "authentication.placeholder.email": {
+    "message": "اپنا ای میل درج کریں",
+    "description": "Placeholder for email input"
+  },
+  "authentication.placeholder.password": {
+    "message": "ایک پاس ورڈ بنائیں (کم از کم 6 حروف)",
+    "description": "Placeholder for password input"
+  },
+  "authentication.placeholder.enter_password": {
+    "message": "اپنا پاس ورڈ درج کریں",
+    "description": "Placeholder for password input on login"
+  },
+  "authentication.placeholder.confirm_password": {
+    "message": "اپنا پاس ورڈ تصدیق کریں",
+    "description": "Placeholder for confirm password input"
+  },
+  "authentication.button.login": {
+    "message": "لاگ ان کریں",
+    "description": "Text for login button"
+  },
+  "authentication.button.signup": {
+    "message": "سائن اپ کریں",
+    "description": "Text for signup button"
+  },
+  "authentication.button.logging_in": {
+    "message": "لاگ ان کیا جا رہا ہے...",
+    "description": "Text for login button when loading"
+  },
+  "authentication.button.creating_account": {
+    "message": "اکاؤنٹ بنایا جا رہا ہے...",
+    "description": "Text for signup button when loading"
+  },
+  "authentication.button.continue_with_google": {
+    "message": "گوگل کے ساتھ جاری رکھیں",
+    "description": "Text for Google social login button"
+  },
+  "authentication.button.continue_with_github": {
+    "message": "گیتھب کے ساتھ جاری رکھیں",
+    "description": "Text for GitHub social login button"
+  },
+  "authentication.button.continue_with_apple": {
+    "message": "ایپل کے ساتھ جاری رکھیں",
+    "description": "Text for Apple social login button"
+  },
+  "authentication.button.redirecting_to": {
+    "message": "{provider} کی طرف رجوع کر رہا ہے...",
+    "description": "Text shown when redirecting to social provider"
+  },
+  "authentication.divider.or_continue_with": {
+    "message": "یا جاری رکھیں",
+    "description": "Text for 'or continue with' divider"
+  },
+  "authentication.divider.or_with_email": {
+    "message": "یا ای میل کے ساتھ",
+    "description": "Text for 'or with email' divider"
+  },
+  "authentication.footer.dont_have_account": {
+    "message": "اکاؤنٹ نہیں ہے؟",
+    "description": "Text for 'don't have account' footer"
+  },
+  "authentication.footer.already_have_account": {
+    "message": "پہلے سے اکاؤنٹ ہے؟",
+    "description": "Text for 'already have account' footer"
+  },
+  "authentication.footer.login_link": {
+    "message": "لاگ ان کریں",
+    "description": "Text for login link in footer"
+  },
+  "authentication.footer.signup_link": {
+    "message": "سائن اپ کریں",
+    "description": "Text for signup link in footer"
+  },
+  "authentication.validation.all_fields_required": {
+    "message": "تمام خانے درکار ہیں",
+    "description": "Error message when all fields are required"
+  },
+  "authentication.validation.both_fields_required": {
+    "message": "دونوں خانے درکار ہیں",
+    "description": "Error message when both fields are required"
+  },
+  "authentication.validation.valid_email_required": {
+    "message": "براہ کرم ایک درست ای میل درج کریں",
+    "description": "Error message for invalid email"
+  },
+  "authentication.validation.password_min_length": {
+    "message": "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے",
+    "description": "Error message for password length"
+  },
+  "authentication.validation.passwords_match": {
+    "message": "پاس ورڈز مماثل نہیں ہیں",
+    "description": "Error message for password mismatch"
+  },
+  "authentication.error.login_failed": {
+    "message": "لاگ ان ناکام ہو گیا",
+    "description": "Error message for login failure"
+  },
+  "authentication.error.signup_failed": {
+    "message": "سائن اپ ناکام ہو گیا",
+    "description": "Error message for signup failure"
+  },
+  "authentication.error.social_login_failed": {
+    "message": "{provider} کے ساتھ لاگ ان ناکام ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "description": "Error message for social login failure"
+  },
+  "authentication.error.social_signup_failed": {
+    "message": "{provider} کے ساتھ سائن اپ ناکام ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔",
+    "description": "Error message for social signup failure"
+  },
+  "authentication.error.oauth_failed": {
+    "message": "{provider} کے ساتھ توثیق ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔",
+    "description": "Error message for OAuth failure"
+  },
+  "authentication.success.social_login": {
+    "message": "{provider} لاگ ان کامیاب! واپس مل کر آئیں، {name}۔",
+    "description": "Success message for social login"
+  },
+  "authentication.success.social_signup": {
+    "message": "{provider} سائن اپ کامیاب! خوش آمدید، {name}۔",
+    "description": "Success message for social signup"
   }
 }

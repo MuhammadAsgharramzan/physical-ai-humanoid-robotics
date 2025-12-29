@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
+import { translate } from '@docusaurus/core/lib/client/exports/translate';
 
 function AuthCallback() {
   useEffect(() => {
@@ -38,9 +39,17 @@ function AuthCallback() {
 
         // Show success message based on auth type
         if (authType === 'signup') {
-          console.log(`${provider} signup successful! Welcome, ${mockUser.name}.`);
+          console.log(translate({
+            id: 'authentication.success.social_signup',
+            message: `{provider} signup successful! Welcome, {name}.`,
+            values: { provider, name: mockUser.name }
+          }));
         } else {
-          console.log(`${provider} login successful! Welcome back, ${mockUser.name}.`);
+          console.log(translate({
+            id: 'authentication.success.social_login',
+            message: `{provider} login successful! Welcome back, {name}.`,
+            values: { provider, name: mockUser.name }
+          }));
         }
 
         // Redirect to home page or the page the user was on
@@ -48,7 +57,11 @@ function AuthCallback() {
       } catch (error) {
         console.error('OAuth callback error:', error);
         // Show error to user and redirect to login
-        alert(`Authentication with ${provider} failed. Please try again.`);
+        alert(translate({
+          id: 'authentication.error.oauth_failed',
+          message: `Authentication with {provider} failed. Please try again.`,
+          values: { provider }
+        }));
         // Redirect to login with error message
         window.location.href = `/login?error=oauth_failed&provider=${provider}`;
       }
@@ -58,7 +71,9 @@ function AuthCallback() {
   }, []);
 
   return (
-    <Layout title="Authenticating..." description="Completing authentication process">
+    <Layout
+      title={translate({ id: 'authentication.authcallback.title', message: 'Authenticating...' })}
+      description={translate({ id: 'authentication.authcallback.description', message: 'Completing authentication process' })}>
       <div style={{
         display: 'flex',
         justifyContent: 'center',
@@ -71,7 +86,11 @@ function AuthCallback() {
           marginBottom: '20px',
           textAlign: 'center'
         }}>
-          Authenticating with {new URLSearchParams(window.location.search).get('provider') || 'provider'}...
+          {translate({
+            id: 'authentication.authcallback.header',
+            message: 'Authenticating with {provider}...',
+            values: { provider: new URLSearchParams(window.location.search).get('provider') || 'provider' }
+          })}
         </div>
         <div style={{
           fontSize: '16px',
@@ -80,8 +99,8 @@ function AuthCallback() {
           textAlign: 'center'
         }}>
           {new URLSearchParams(window.location.search).get('type') === 'signup'
-            ? 'Creating your account'
-            : 'Logging you in'}
+            ? translate({ id: 'authentication.authcallback.creating_account', message: 'Creating your account' })
+            : translate({ id: 'authentication.authcallback.logging_in', message: 'Logging you in' })}
         </div>
         <div className="loading-spinner" style={{
           width: '40px',
