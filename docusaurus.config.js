@@ -75,13 +75,19 @@ const config = {
             position: 'right',
           },
           {
-            type: 'custom-AuthNavbarItem',
+            type: 'dropdown',
+            label: 'Account',
             position: 'right',
-          },
-          {
-            href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics',
-            label: 'GitHub',
-            position: 'right',
+            items: [
+              {
+                label: 'Login',
+                to: '/login',
+              },
+              {
+                label: 'Sign Up',
+                to: '/signup',
+              },
+            ],
           },
         ],
       },
@@ -144,6 +150,23 @@ const config = {
               {
                 label: 'Discord',
                 href: 'https://discordapp.com/invite/docusaurus',
+              },
+            ],
+          },
+          {
+            title: 'GitHub',
+            items: [
+              {
+                label: 'Repository',
+                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics',
+              },
+              {
+                label: 'Issues',
+                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/issues',
+              },
+              {
+                label: 'Contributing',
+                href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/blob/main/CONTRIBUTING.md',
               },
             ],
           },
