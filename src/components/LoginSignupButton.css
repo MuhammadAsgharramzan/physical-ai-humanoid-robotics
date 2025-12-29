@@ -1,0 +1,55 @@
+.login-signup-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.auth-button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.login-button {
+  background: transparent;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+}
+
+.login-button:hover {
+  background: rgba(5, 150, 105, 0.1);
+}
+
+.signup-button {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  color: white;
+}
+
+.signup-button:hover {
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--ifm-color-primary-darker));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .login-signup-container {
+    gap: 0.25rem;
+  }
+
+  .auth-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .signup-button {
+    padding: 0.5rem 1rem;
+  }
+}

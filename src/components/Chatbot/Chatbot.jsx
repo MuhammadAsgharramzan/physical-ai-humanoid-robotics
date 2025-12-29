@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useUser } from '../../contexts/UserContext';
 import './Chatbot.css';
 
 const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
@@ -6,6 +7,7 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [conversationId, setConversationId] = useState(null);
+  const { user } = useUser();
   const messagesEndRef = useRef(null);
 
   // Initialize conversation
@@ -29,11 +31,15 @@ const Chatbot = ({ apiUrl = 'http://localhost:8000' }) => {
       setConversationId(id);
 
       // Add welcome message
+      const welcomeMessage = user
+        ? `Hello ${user.username}! I'm your Physical AI & Humanoid Robotics assistant. How can I help you with the textbook today?`
+        : 'Hello! I\'m your Physical AI & Humanoid Robotics assistant. How can I help you with the textbook today?';
+
       setMessages([
         {
           id: 'welcome',
           role: 'assistant',
-          content: 'Hello! I\'m your Physical AI & Humanoid Robotics assistant. How can I help you with the textbook today?',
+          content: welcomeMessage,
           timestamp: new Date().toISOString()
         }
       ]);

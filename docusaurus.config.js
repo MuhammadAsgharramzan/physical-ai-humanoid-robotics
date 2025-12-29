@@ -75,6 +75,10 @@ const config = {
             position: 'right',
           },
           {
+            type: 'custom-AuthNavbarItem',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics',
             label: 'GitHub',
             position: 'right',
