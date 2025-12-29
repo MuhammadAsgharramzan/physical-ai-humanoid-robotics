@@ -45,7 +45,23 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     // Check if user is logged in on initial load
     const token = localStorage.getItem('authToken');
-    if (token) {
+    const storedUser = localStorage.getItem('user');
+
+    if (storedUser) {
+      // If we have a stored user object (from social login), use that
+      try {
+        const userData = JSON.parse(storedUser);
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: userData
+        });
+      } catch (error) {
+        console.error('Error parsing stored user data:', error);
+        localStorage.removeItem('user');
+        dispatch({ type: 'LOGOUT' });
+      }
+    } else if (token) {
+      // If we have a JWT token, decode it
       try {
         // Decode JWT to get user info
         const base64Url = token.split('.')[1];
@@ -88,10 +104,15 @@ export const UserProvider = ({ children }) => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('authToken', data.access_token);
+        const authToken = data.access_token;
+        const userData = { username: data.user.username, email: data.user.email, id: data.user.id };
+
+        localStorage.setItem('authToken', authToken);
+        localStorage.setItem('user', JSON.stringify(userData));
+
         dispatch({
           type: 'LOGIN_SUCCESS',
-          payload: { username: data.user.username, email: data.user.email }
+          payload: userData
         });
         return { success: true };
       } else {
@@ -126,10 +147,15 @@ export const UserProvider = ({ children }) => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('authToken', data.access_token);
+        const authToken = data.access_token;
+        const userData = { username: data.username, email: data.email, id: data.id };
+
+        localStorage.setItem('authToken', authToken);
+        localStorage.setItem('user', JSON.stringify(userData));
+
         dispatch({
           type: 'LOGIN_SUCCESS',
-          payload: { username: data.username, email: data.email }
+          payload: userData
         });
         return { success: true };
       } else {
@@ -150,6 +176,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
     dispatch({ type: 'LOGOUT' });
   };
 

@@ -30,29 +30,45 @@ function LoginPageContent() {
   };
 
   const handleSocialLogin = async (provider) => {
-    // Simulate social login process
-    console.log(`Initiating ${provider} login...`);
+    // Show loading state
+    setFormError('');
 
-    // Show a temporary message
-    alert(`Initiating ${provider} login. This would redirect to ${provider}'s authentication page in a real implementation.`);
+    try {
+      // Simulate OAuth redirect process
+      console.log(`Initiating ${provider} login...`);
 
-    // In a real implementation, this would redirect to the OAuth provider
-    // For now, we'll simulate a successful login after a delay
-    setTimeout(() => {
-      // Create a mock token and user data
-      const mockToken = `mock-${provider.toLowerCase()}-token-${Date.now()}`;
-      const mockUser = {
-        username: `${provider.toLowerCase()}_user_${Date.now()}`,
-        email: `${provider.toLowerCase()}_user_${Date.now()}@example.com`,
-        provider: provider.toLowerCase()
-      };
+      // Show loading indication
+      const socialButton = document.querySelector(`.social-login-button.${provider.toLowerCase()}`);
+      if (socialButton) {
+        const originalText = socialButton.innerHTML;
+        socialButton.innerHTML = `Redirecting to ${provider}...`;
+        socialButton.disabled = true;
 
-      // Store the token
-      localStorage.setItem('authToken', mockToken);
+        // In a real implementation, this would redirect to the OAuth provider
+        // For this mock, we'll redirect to our auth callback page to simulate the flow
+        setTimeout(() => {
+          // Restore button state
+          if (socialButton) {
+            socialButton.innerHTML = originalText;
+            socialButton.disabled = false;
+          }
 
-      // Redirect to home page
-      window.location.href = '/';
-    }, 1000);
+          // Redirect to auth callback page to simulate OAuth flow
+          window.location.href = `/auth-callback?provider=${provider}&type=login`;
+        }, 1500);
+      }
+    } catch (error) {
+      console.error(`Error during ${provider} login:`, error);
+      setFormError(`Failed to login with ${provider}. Please try again.`);
+
+      // Restore button state
+      const socialButton = document.querySelector(`.social-login-button.${provider.toLowerCase()}`);
+      if (socialButton) {
+        const originalText = socialButton.innerHTML;
+        socialButton.innerHTML = originalText;
+        socialButton.disabled = false;
+      }
+    }
   };
 
   return (
