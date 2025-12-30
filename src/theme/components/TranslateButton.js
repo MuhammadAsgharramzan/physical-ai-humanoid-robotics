@@ -21,29 +21,41 @@ const TranslateButton = ({ isFloating = false }) => {
   const isUrdu = currentLocale === 'ur';
   const targetLocale = isUrdu ? 'en' : 'ur';
 
-  // Simple approach: construct the path manually
-  const currentPath = location.pathname;
-  let targetPath = currentPath;
-
-  // Remove current locale from path if present
-  if (currentPath.startsWith(`/${currentLocale}/`)) {
-    targetPath = currentPath.substring(currentLocale.length + 1);
-  } else if (currentPath === `/${currentLocale}`) {
-    targetPath = '/';
-  }
-
-  // Add target locale to path if it's not the default
-  if (targetLocale !== i18n.defaultLocale) {
-    if (targetPath === '/') {
-      targetPath = `/${targetLocale}`;
-    } else {
-      targetPath = `/${targetLocale}${targetPath}`;
-    }
-  }
-
   const toggleLanguage = () => {
-    // Navigate to the new locale path
-    window.location.href = targetPath;
+    // Get the current path without the locale prefix
+    let currentPath = location.pathname;
+
+    // Remove current locale from path if present
+    if (currentPath.startsWith(`/${currentLocale}/`)) {
+      currentPath = currentPath.substring(currentLocale.length + 1);
+    } else if (currentPath === `/${currentLocale}`) {
+      currentPath = '/';
+    } else if (currentPath.startsWith('/en/') || currentPath.startsWith('/ur/')) {
+      // Remove any existing locale prefix
+      const pathParts = currentPath.split('/');
+      if (pathParts.length > 1) {
+        currentPath = '/' + pathParts.slice(2).join('/');
+        if (!currentPath.startsWith('/')) currentPath = '/' + currentPath;
+      }
+    }
+
+    // Construct the new path with the target locale
+    let newPath;
+    if (targetLocale === i18n.defaultLocale) {
+      // For default locale (English), we typically don't include the locale in the path
+      newPath = currentPath;
+    } else {
+      // For non-default locales (Urdu), include the locale prefix
+      if (currentPath === '/') {
+        newPath = `/${targetLocale}`;
+      } else {
+        newPath = `/${targetLocale}${currentPath}`;
+      }
+    }
+
+    // Navigate to the new locale path using a full page navigation
+    // This ensures Docusaurus properly handles the locale switching
+    window.location.href = `${newPath}${location.search}${location.hash}`;
   };
 
   const buttonStyle = {
