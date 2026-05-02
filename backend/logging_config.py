@@ -1,15 +1,13 @@
 import logging
 import logging.config
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 import os
 
 class LoggingSettings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
     log_level: str = os.getenv("LOG_LEVEL", "INFO")
     log_file: str = os.getenv("LOG_FILE", "app.log")
     log_format: str = os.getenv("LOG_FORMAT", "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-
-    class Config:
-        env_file = ".env"
 
 def setup_logging():
     """Setup logging configuration for the application"""

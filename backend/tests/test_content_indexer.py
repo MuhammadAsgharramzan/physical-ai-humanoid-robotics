@@ -1,6 +1,16 @@
 import pytest
 import asyncio
+import os
 from unittest.mock import AsyncMock, MagicMock, patch
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Set dummy API key for testing
+os.environ["OPENAI_API_KEY"] = "test-key"
+os.environ["QDRANT_MODE"] = "memory"
+
 from backend.content_indexer import ContentIndexer
 
 @pytest.fixture
@@ -54,28 +64,30 @@ async def test_search_content():
     """Test content search functionality"""
     indexer = ContentIndexer()
 
-    # Mock the OpenAI embedding call
-    with patch.object(indexer.openai_client.embeddings, 'create') as mock_create:
-        mock_response = MagicMock()
-        mock_response.data = [MagicMock()]
-        mock_response.data[0].embedding = [0.1] * 1536  # Mock embedding
-        mock_create.return_value = mock_response
+    # Mock the OpenAI client
+    mock_openai = MagicMock()
+    indexer.openai_client = mock_openai
+    
+    mock_response = MagicMock()
+    mock_response.data = [MagicMock()]
+    mock_response.data[0].embedding = [0.1] * 1536
+    mock_openai.embeddings.create.return_value = mock_response
 
-        # Mock the Qdrant search
-        with patch.object(indexer.qdrant_client, 'search') as mock_search:
-            mock_result = MagicMock()
-            mock_result.id = "test_id"
-            mock_result.payload = {
-                "title": "Test Title",
-                "content": "Test content",
-                "module_id": "module1",
-                "lesson_id": "lesson1"
-            }
-            mock_result.score = 0.9
-            mock_search.return_value = [mock_result]
+    # Mock the Qdrant search
+    with patch.object(indexer.qdrant_client, 'search') as mock_search:
+        mock_result = MagicMock()
+        mock_result.id = "test_id"
+        mock_result.payload = {
+            "title": "Test Title",
+            "content": "Test content",
+            "module_id": "module1",
+            "lesson_id": "lesson1"
+        }
+        mock_result.score = 0.9
+        mock_search.return_value = [mock_result]
 
-            results = await indexer.search_content("test query")
+        results = await indexer.search_content("test query")
 
-            assert len(results) == 1
-            assert results[0]["title"] == "Test Title"
-            assert results[0]["content"] == "Test content"
+        assert len(results) == 1
+        assert results[0]["title"] == "Test Title"
+        assert results[0]["content"] == "Test content"

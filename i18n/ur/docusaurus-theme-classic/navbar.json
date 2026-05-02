@@ -14,5 +14,17 @@
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
+  },
+  "item.label.Account": {
+    "message": "Account",
+    "description": "Navbar item with label Account"
+  },
+  "item.label.Login": {
+    "message": "Login",
+    "description": "Navbar item with label Login"
+  },
+  "item.label.Sign Up": {
+    "message": "Sign Up",
+    "description": "Navbar item with label Sign Up"
   }
 }

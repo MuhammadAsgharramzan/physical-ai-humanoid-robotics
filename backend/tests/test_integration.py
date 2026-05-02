@@ -74,9 +74,10 @@ def test_api_consistency():
 
 def test_cors_integration():
     """Test that CORS is properly configured across the API"""
-    response = client.get("/")
+    response = client.get("/", headers={"Origin": "http://localhost:3000"})
     # Check that CORS headers are present
     assert "access-control-allow-origin" in response.headers
+    assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
 
 def test_content_type_consistency():
     """Test that content types are consistent across the API"""

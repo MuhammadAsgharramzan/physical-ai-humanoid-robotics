@@ -74,5 +74,21 @@
   "copyright": {
     "message": "Copyright © 2025 Physical AI & Humanoid Robotics Project. Built with Docusaurus.",
     "description": "The footer copyright"
+  },
+  "link.title.GitHub": {
+    "message": "GitHub",
+    "description": "The title of the footer links column with title=GitHub in the footer"
+  },
+  "link.item.label.Repository": {
+    "message": "Repository",
+    "description": "The label of footer link with label=Repository linking to https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics"
+  },
+  "link.item.label.Issues": {
+    "message": "Issues",
+    "description": "The label of footer link with label=Issues linking to https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/issues"
+  },
+  "link.item.label.Contributing": {
+    "message": "Contributing",
+    "description": "The label of footer link with label=Contributing linking to https://github.com/MuhammadAsgharramzan/physical-ai-humanoid-robotics/blob/main/CONTRIBUTING.md"
   }
 }

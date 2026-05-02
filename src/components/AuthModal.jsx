@@ -79,10 +79,16 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
   };
 
   return (
-    <div className="auth-modal-overlay" onClick={onClose}>
-      <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
+    <div className="auth-modal-overlay" onClick={onClose} role="presentation">
+      <div 
+        className="auth-modal" 
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="auth-modal-title"
+      >
         <div className="auth-modal-header">
-          <h2>{mode === 'login' ? 'Login' : 'Sign Up'}</h2>
+          <h2 id="auth-modal-title">{mode === 'login' ? 'Login' : 'Sign Up'}</h2>
           <button className="auth-modal-close" onClick={onClose} aria-label="Close">
             &times;
           </button>
@@ -142,7 +148,7 @@ const AuthModal = ({ isOpen, onClose, mode = 'login' }) => {
           )}
 
           {(formError || authError) && (
-            <div className="auth-error">
+            <div className="auth-error" aria-live="assertive" role="alert">
               {formError || authError}
             </div>
           )}

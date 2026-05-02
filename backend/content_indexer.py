@@ -13,10 +13,15 @@ logger = logging.getLogger(__name__)
 
 class ContentIndexer:
     def __init__(self):
-        self.qdrant_client = QdrantClient(
-            url=qdrant_settings.qdrant_url,
-            api_key=qdrant_settings.qdrant_api_key
-        )
+        # Support in-memory mode for testing
+        if os.getenv("QDRANT_MODE") == "memory":
+            self.qdrant_client = QdrantClient(":memory:")
+            logger.info("Using in-memory Qdrant client for testing")
+        else:
+            self.qdrant_client = QdrantClient(
+                url=qdrant_settings.qdrant_url,
+                api_key=qdrant_settings.qdrant_api_key
+            )
         self.collection_name = qdrant_settings.qdrant_collection_name
         self.openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.tokenizer = tiktoken.get_encoding("cl100k_base")

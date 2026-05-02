@@ -63,9 +63,10 @@ def test_auth_required_endpoints():
 
 def test_cors_security():
     """Test CORS configuration for security"""
-    response = client.get("/")
+    response = client.get("/", headers={"Origin": "http://localhost:3000"})
     # Check if CORS headers are properly configured
     assert "access-control-allow-origin" in response.headers
+    assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
 
 def test_session_security():
     """Test session management security (simulated)"""
