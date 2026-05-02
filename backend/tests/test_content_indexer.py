@@ -73,21 +73,23 @@ async def test_search_content():
     mock_response.data[0].embedding = [0.1] * 1536
     mock_openai.embeddings.create.return_value = mock_response
 
-    # Mock the Qdrant search
-    with patch.object(indexer.qdrant_client, 'search') as mock_search:
-        mock_result = MagicMock()
-        mock_result.id = "test_id"
-        mock_result.payload = {
-            "title": "Test Title",
-            "content": "Test content",
-            "module_id": "module1",
-            "lesson_id": "lesson1"
-        }
-        mock_result.score = 0.9
-        mock_search.return_value = [mock_result]
+    # Mock the Qdrant client
+    mock_qdrant = MagicMock()
+    indexer.qdrant_client = mock_qdrant
+    
+    mock_result = MagicMock()
+    mock_result.id = "test_id"
+    mock_result.payload = {
+        "title": "Test Title",
+        "content": "Test content",
+        "module_id": "module1",
+        "lesson_id": "lesson1"
+    }
+    mock_result.score = 0.9
+    mock_qdrant.search.return_value = [mock_result]
 
-        results = await indexer.search_content("test query")
+    results = await indexer.search_content("test query")
 
-        assert len(results) == 1
-        assert results[0]["title"] == "Test Title"
-        assert results[0]["content"] == "Test content"
+    assert len(results) == 1
+    assert results[0]["title"] == "Test Title"
+    assert results[0]["content"] == "Test content"
